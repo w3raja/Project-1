@@ -5,9 +5,20 @@ fs.writeFile('test.txt',"Data goes here", (err)=>{
     if(err){
         throw err;
     }
+    let array = [];
+    let add = (n) => {
+        for(i=1; i<=n; i++){
+            array.push(i);
+        }
+    };
+    add(20);
+    fs.appendFile('test.txt',`\ncreated \n ${array}`, (err)=>{
+        console.log("File appended");
+        if(err) throw err;
+    })
 });
 
-fs.appendFile('test.txt',"'\nAppended text", (err)=>{
-    console.log("File appended");
+fs.unlink('delete_file.txt',(err)=>{
+    console.log("File deleted");
     if(err) throw err;
 })
